@@ -19,12 +19,7 @@
             android:layout_weight="10"
             android:text="가격 보이기" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="카드 보기"
-            android:layout_weight="1"/>
+
     </TableRow>
 
     <TableRow
@@ -36,13 +31,15 @@
             android:id="@+id/grid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_span="2"/>
+            android:layout_span="2"
+            android:numColumns="2"
+            />
     </TableRow>
 
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="0.1"
         >
 
         <com.example.kimja.a7th_homework.customwidget

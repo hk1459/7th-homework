@@ -14,7 +14,6 @@ public class Gridadapter extends BaseAdapter {
     Gridadapter(Context context, ArrayList<Fruit> fruit) {
         this.context = context;
         this.fruit = fruit;
-
     }
 
 
@@ -45,8 +44,9 @@ public class Gridadapter extends BaseAdapter {
 //        image.setImageResource(fruit.get(position).imgno);
 //        price.setText(fruit.get(position).price);
 
-        if(convertView == null)
+        if (convertView == null){
             convertView = new Griditem(context);
+        }
         ((Griditem)convertView).setData(fruit.get(position));
         return convertView;
     }

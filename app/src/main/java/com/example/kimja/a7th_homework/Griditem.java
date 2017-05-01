@@ -10,7 +10,6 @@ import android.widget.TextView;
 public class Griditem extends LinearLayout{
     TextView tv,price;
     ImageView image;
-
     public Griditem(Context context) {
         super(context);
         init(context);
@@ -27,6 +26,10 @@ public class Griditem extends LinearLayout{
         //에러
         tv.setText(one.name);
         image.setImageResource(one.imgno);
+        price.setText(Integer.toString(one.price));
+        if(one.pricevisible) price.setVisibility(VISIBLE);
+        else price.setVisibility(INVISIBLE);
     }
+
 
 }

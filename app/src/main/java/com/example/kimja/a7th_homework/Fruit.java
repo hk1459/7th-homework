@@ -8,12 +8,20 @@ public class Fruit {
     String name;
     int imgno;
     int price;
-    static final int[] imagelist = {R.drawable.abocado,R.drawable.banana
-            ,R.drawable.cherry,R.drawable.cranberry,R.drawable.grape,R.drawable.kiwi,R.drawable.orange
-            ,R.drawable.watermelon};
+    boolean pricevisible;
+
     public Fruit (String name , int imgeno, int price){
         this.name = name;
         this.imgno = imgeno;
+        this.price = price;
+
+    }
+    public void setpricevi(boolean a){
+        this.pricevisible = a;
+    }
+    public void setdata(String name, int imgno , int price){
+        this.name = name;
+        this.imgno = imgno;
         this.price = price;
     }
 }
