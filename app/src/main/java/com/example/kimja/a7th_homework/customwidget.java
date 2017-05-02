@@ -11,10 +11,11 @@ import android.widget.LinearLayout;
 
 
 public class customwidget extends LinearLayout implements View.OnClickListener {
-    int imageno= 1;
-    EditText et,et2;
-    ImageView img;
-    Button b_next, b_add;
+    static int imageno= 1;
+    static EditText et,et2;
+    static ImageView img;
+    Button b_next;
+    static Button b_add;
     final int[] imagelist = {R.drawable.abocado,R.drawable.banana
             ,R.drawable.cherry,R.drawable.cranberry,R.drawable.grape,R.drawable.kiwi,R.drawable.orange
             ,R.drawable.watermelon};
@@ -41,13 +42,13 @@ public class customwidget extends LinearLayout implements View.OnClickListener {
     public void setOnAddListener(OnAddListener onAddListener){
         this.onAddListener = onAddListener;
     }
-
     @Override
     public void onClick(View v) {
         if(v==b_add){
-//            et.getText().toString()
+            if(imageno == 0) imageno = 1;
             onAddListener.onAdd(et.getText().toString(),
-                    imageno,Integer.parseInt(et2.getText().toString()));
+                    imageno-1,Integer.parseInt(et2.getText().toString()));
+
         }
         else if(v == b_next){
             if(imageno == 8) imageno = 0;

@@ -34,15 +34,6 @@ public class Gridadapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-//        if(convertView == null)
-//            convertView = LayoutInflater.from(context).inflate(R.layout.griditem,null);
-//
-//        final TextView tv = (TextView)convertView.findViewById(R.id.tvname);
-//        final ImageView image = (ImageView)convertView.findViewById(R.id.img1);
-//        final TextView price = (TextView)convertView.findViewById(R.id.price);
-//        tv.setText(fruit.get(position).name);
-//        image.setImageResource(fruit.get(position).imgno);
-//        price.setText(fruit.get(position).price);
 
         if (convertView == null){
             convertView = new Griditem(context);

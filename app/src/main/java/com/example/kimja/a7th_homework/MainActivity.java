@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
     Gridadapter adapter;
     GridView gridView;
-    Button button;
     CheckBox checkBox;
+    int posi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,18 +36,8 @@ public class MainActivity extends AppCompatActivity {
         gridView = (GridView)findViewById(R.id.grid);
         checkBox = (CheckBox)findViewById(R.id.checkBox);
 
-        fruit.add(new Fruit("아보카도",imagelist[0],1));
-        fruit.add(new Fruit("수박",imagelist[1],2));
-        fruit.add(new Fruit("바나나",imagelist[2],3));
-        fruit.add(new Fruit("체리",imagelist[3],4));
-        fruit.add(new Fruit("아보카도",imagelist[0],1));
-        fruit.add(new Fruit("수박",imagelist[1],2));
-        fruit.add(new Fruit("바나나",imagelist[2],3));
-        fruit.add(new Fruit("체리",imagelist[3],4));
         adapter = new Gridadapter(this, fruit);
         gridView.setAdapter(adapter);
-
-
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -59,26 +49,46 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        final customwidget customwidget3;
+        customwidget3 = (customwidget)findViewById(R.id.add);
+        customwidget3.setOnAddListener(new customwidget.OnAddListener() {
+            @Override
+            public void onAdd(String name, int imageno, int price) {
+                if(customwidget3.b_add.getText() == "M"){
+                    adapter.fruit.set(posi,new Fruit(name,imagelist[imageno],price,checkBox.isChecked()));
+                    customwidget3.b_add.setText("ADD");
+                    posi = 0;
+                    customwidget.et.setText("");
+                    customwidget.et2.setText("");
+                    customwidget.imageno = 0;
+                    customwidget.img.setImageResource(imagelist[customwidget.imageno]);
+                }
+                else {
+                    adapter.fruit.add(new Fruit(name,imagelist[imageno],price,checkBox.isChecked()));
+                    customwidget.et.setText("");
+                    customwidget.et2.setText("");
+                    customwidget.imageno = 0;
+                    customwidget.img.setImageResource(imagelist[customwidget.imageno]);
+                }
+                adapter.notifyDataSetChanged();
+            }
+        });
+
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //add버튼 m   선택값 아래 표시
-
+                customwidget.b_add.setText("M");
+                customwidget.et.setText(fruit.get(position).getName());
+                customwidget.et2.setText(Integer.toString(fruit.get(position).getPrice()));
+                customwidget.img.setImageResource(fruit.get(position).imgno);
+                for(int i = 0; i< imagelist.length; i++){
+                    if(imagelist[i] == fruit.get(position).imgno){
+                        customwidget.imageno = i+1;
+                    }
+                }
+                posi = position;
             }
         });
-
-        customwidget customwidget2;
-        customwidget2 = (customwidget)findViewById(R.id.b_add);
-        customwidget2.setOnAddListener(new customwidget.OnAddListener() {
-            @Override
-            public void onAdd(String name, int imageno, int price) {
-                adapter.fruit.add(new Fruit(name,imagelist[imageno],price));
-            }
-        });
-
-
-
-
     }
 
 }

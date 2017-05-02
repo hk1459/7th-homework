@@ -10,10 +10,11 @@ public class Fruit {
     int price;
     boolean pricevisible;
 
-    public Fruit (String name , int imgeno, int price){
+    public Fruit (String name , int imgeno, int price,boolean pricevisible){
         this.name = name;
         this.imgno = imgeno;
         this.price = price;
+        this.pricevisible = pricevisible;
 
     }
     public void setpricevi(boolean a){
@@ -24,4 +25,7 @@ public class Fruit {
         this.imgno = imgno;
         this.price = price;
     }
+    public String getName() {return name;}
+    public int getImgno() {return imgno;}
+    public int getPrice() {return price;}
 }
