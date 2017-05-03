@@ -22,14 +22,18 @@
             android:text="과일이름 : "
             android:textSize="20dp" />
 
-        <EditText
+        <AutoCompleteTextView
+
             android:id="@+id/f_name"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
             android:layout_weight="1"
             android:background="#fff"
-            android:padding="5dp" />
+            android:padding="5dp"
+            android:completionThreshold="1" >
+
+        </AutoCompleteTextView>
 
         <ImageView
             android:id="@+id/image1"
